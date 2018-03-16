@@ -1,10 +1,11 @@
 db = require('../models');
 
-module.export = function(app, {
+module.exports = function(app) {
 
   app.post('/api/homes', function(req, res) {
-    db.post.create({req.body}).then(function(dbHomes) {
+    db.Homes.create(req.body).then(function(dbHomes) {
       res.json(dbHomes);
     });
   });
-});
+
+}
