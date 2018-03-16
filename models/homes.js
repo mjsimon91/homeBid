@@ -2,27 +2,33 @@ module.exports = function(sequelize, DataTypes) {
   var Homes = sequelize.define('Homes', {
 
     seller: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
 
     address: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
 
     description: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: true
     },
 
     bidAmount: {
-      type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL,
+      defaultValue: 1.00
     },
 
     bidCount: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     },
 
     viewCount: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     },
 
     imgUrl: {
