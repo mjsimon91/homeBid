@@ -1,10 +1,11 @@
 //Setting the dependencies
+var exphbs = require('express-handlebars');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-//Run the html routes for non handelbars pages
-require('./routes/html-routes.js')(app);
+
+
 
 
 
@@ -21,11 +22,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // If we decide to use handlebars...uncomment the next few lines
-var exphbs = require('express-handlebars');
+
 
 // The handlebars files are .handlebars
 app.engine("handlebars", exphbs({defaultLayout: 'main'}));
 app.set("view engine", "handlebars");
+
+//Run the html routes for non handelbars pages
+require('./routes/html-routes.js')(app);
+require('./controller/homebid.js')(app)
 
 app.listen(PORT, function(){
     console.log(`The application is now listening on Port ${PORT}`)

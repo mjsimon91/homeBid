@@ -1,8 +1,14 @@
-body {
+#homeContainer {
   background-image: url('./Images/home.jpeg');
   background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .homeButtons {
   margin: 50px
+}
+
+.profileImage {
+  margin-top: 10px;
+  width: 150px;
 }
