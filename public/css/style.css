@@ -1,0 +1,8 @@
+body {
+  background-image: url('./Images/home.jpeg');
+  background-size: 100%;
+}
+
+.homeButtons {
+  margin: 50px
+}
