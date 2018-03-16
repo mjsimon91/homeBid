@@ -1,8 +1,8 @@
 //Setting the dependencies
-var express    = require('express');
-var exphbs     = require('express-handlebars');
+var express = require('express');
+var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var db         = require('./models');
+var db = require('./models');
 
 var app = express();
 
@@ -18,16 +18,22 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 //parse the JSON application
 app.use(bodyParser.json());
 
 //The handlebars files are .handlebars
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}));
 
 app.set('view engine', 'handlebars');
 
-app.listen(PORT, function(){
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
     console.log(`The application is now listening on Port ${PORT}`)
-})
+  });
+});
