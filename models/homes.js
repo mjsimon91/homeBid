@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Home = sequelize.define('Home', {
+  var Homes = sequelize.define('Homes', {
 
     seller: {
       type: DataTypes.STRING
@@ -25,12 +25,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
 
-    img: {
+    imgUrl: {
       type: DataTypes.STRING,
       validate: {isUrl: true}
     }
   });
-  // associate with seller and bid
 
-  return Home;
+  // associate with members and bids
+
+  return Homes;
 }
