@@ -13,6 +13,7 @@ var PORT = process.env.PORT || 3000;
 
 //serve the static content from the public folder
 app.use(express.static("public"));
+app.use(express.static("node_modules/auth0-js/build/"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
