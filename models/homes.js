@@ -1,14 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
   var Homes = sequelize.define('Homes', {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 1.00
+    },
 
     seller: {
       type: DataTypes.STRING,
-      allowNull: false
+      // allowNull: false <- eventually
     },
 
     address: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
 
     description: {
@@ -32,8 +37,8 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     imgUrl: {
-      type: DataTypes.STRING,
-      validate: {isUrl: true}
+      type: DataTypes.STRING
+      // validate: {isUrl: true}
     }
   });
 

@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/homes/', function(req, res) {
+  app.post('/api/homes', function(req, res) {
     db.Homes.create(req.body);
   });
 
