@@ -6,11 +6,22 @@ var path = require("path");
 // =============================================================
 module.exports = function(app) {
   //Show the first page
-  app.get("/", function(req,res){
+  app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
   app.get('/form', function(req, res) {
     res.render('form', {});
+  });
+
+  app.get('/listings', function(req, res) {
+
+    var hbsObject = db.Homes.findAll({
+      where: {
+        activeListing: true
+      }
+    });
+
+    res.render('viewListings', hbsObject);
   });
 };
