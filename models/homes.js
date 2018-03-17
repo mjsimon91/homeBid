@@ -39,6 +39,11 @@ module.exports = function(sequelize, DataTypes) {
     imgUrl: {
       type: DataTypes.STRING
       // validate: {isUrl: true}
+    },
+
+    activeListing: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   });
 
