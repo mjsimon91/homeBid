@@ -8,7 +8,8 @@ var app = express();
 
 // Routes
 // =============================================================
-require('./routes/api-routes.js')(app);
+require('./routes/listings-api-routes.js')(app);
+require('./routes/members-api-routes.js')(app);
 require('./routes/html-routes.js')(app);
 
 //Set the Port
