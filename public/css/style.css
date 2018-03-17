@@ -8,7 +8,20 @@
   margin: 50px
 }
 
-.profileImage {
-  margin-top: 10px;
-  width: 150px;
+.profileContainer {
+  margin-top: 20px;
+}
+
+/*This is probably temporary*/
+.won {
+  color: green;
+}
+
+/*This is probably temporary*/
+.lost {
+  color: red;
+}
+
+.messageImage {
+  margin: 5px;
 }
