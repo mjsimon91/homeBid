@@ -6,12 +6,6 @@ var db = require('./models');
 
 var app = express();
 
-// Routes
-// =============================================================
-require('./routes/listings-api-routes.js')(app);
-require('./routes/members-api-routes.js')(app);
-require('./routes/html-routes.js')(app);
-
 //Set the Port
 var PORT = process.env.PORT || 3000;
 
@@ -32,6 +26,12 @@ app.engine('handlebars', exphbs({
 }));
 
 app.set('view engine', 'handlebars');
+
+// Routes
+// =============================================================
+require('./routes/listings-api-routes.js')(app);
+require('./routes/members-api-routes.js')(app);
+require('./routes/html-routes.js')(app);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {

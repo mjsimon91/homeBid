@@ -4,8 +4,6 @@ $(function() {
   $('#submit-listing').on('click', function(event) {
     event.preventDefault();
 
-    console.log('button click');
-
     var title = $('#title-line').val().trim();
     var address = $('#address-line').val().trim();
     var imgUrl = 'www.google.com'; // for now <- $('#imgUrl-line').val().trim();
@@ -26,10 +24,9 @@ $(function() {
       type: 'POST',
       data: newHome
     }).then(
-      function() {
+      function(res) {
+        console.log(res)
         console.log('new home listed');
-
-        location.reload();
       }
     );
   });

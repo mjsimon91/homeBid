@@ -2,8 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Homes = sequelize.define('Homes', {
     title: {
       type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: 1.00
+      allowNull: true
     },
 
     seller: {

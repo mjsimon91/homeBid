@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   //get request to return all homes
   app.get("/api/homes", function(req, res) {
-    db.Homes.findall({
+    db.Homes.findAll({
       where: {
         activeListing: true
       }
@@ -26,7 +26,13 @@ module.exports = function(app) {
 
   //add new homes
   app.post("/api/homes", function(req, res) {
-    db.Homes.create(req.body).then(function(dbHomes) {
+    console.log(req.body);
+    db.Homes.create({
+      title: req.body.title,
+      address: req.body.address,
+      description: req.body.description,
+      imgUrl: req.body.imgUrl
+    }).then(function(dbHomes) {
       res.json(dbHomes);
     });
   });
