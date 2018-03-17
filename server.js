@@ -4,13 +4,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-
-
-
-
-
 //Set the Port
 var PORT = process.env.PORT || 3000;
+
+// Requiring our models for syncing
+var db = require("./models");
 
 //serve the static content from the public folder
 app.use(express.static("public"));
@@ -30,8 +28,10 @@ app.set("view engine", "handlebars");
 
 //Run the html routes for non handelbars pages
 require('./routes/html-routes.js')(app);
-require('./controller/homebid.js')(app)
+require('./controller/homebid.js')(app);
 
-app.listen(PORT, function(){
-    console.log(`The application is now listening on Port ${PORT}`)
-})
+db.sequelize.sync().then(function(){
+  app.listen(PORT, function(){
+      console.log(`The application is now listening on Port ${PORT}`);
+  });
+});
