@@ -5,7 +5,7 @@ var db = require("../models")
 module.exports = function(app){
   //Get the route for profile information for one person
   app.get("/api/members/:id", function(req, res){
-		db.Members.findAll({
+		db.Members.findOne({
 			where: {
 				id: req.params.id
 			},
