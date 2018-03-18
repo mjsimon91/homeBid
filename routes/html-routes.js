@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   //get the profile
   app.get('/profile/:id', function(req,res){
-    res.render("profile", {Members: res});
+    res.render("profile",{});
   });
 
   //Get the listings for a sepcific profile
