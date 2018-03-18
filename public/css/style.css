@@ -3,6 +3,19 @@ body {
   background-size: 100%;
 }
 
+.teal-border {
+  border-style: solid;
+  border-width: thick;
+  border-color: #4db6ac;
+}
+
+.pad-6 {
+  padding: 6em;
+}
+
+.pad-4 {
+  padding: 4em;
+
 .homeButtons {
   margin: 50px
 }
