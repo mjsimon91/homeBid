@@ -28,6 +28,7 @@
     </div>
    </div>
 
+
     <div class="col s9">
 
 
@@ -36,13 +37,17 @@
         {{!-- Add profile image --}}
         <div class="row">
           <div class="col s4">
+
             <img class="circle profileImage" src="http://placehold.it/150" alt="Profile">
+
           </div>
 
           <div>
             <div class="input-field col s4">
               {{!-- Update value in this line to hold the datatag --}}
-              <input value="Alvin" id="firstName" type="text" class="validate">
+              {{#each Members}}
+              <input value="{{this}}" id="firstName" type="text" class="validate">
+                {{/each Members}}
               <label class="active" for="firstName">First Name</label>
             </div>
 
@@ -79,6 +84,7 @@
               <label class="active" for="about">Tell the world about yourself</label>
             </div>
           </div>
+
 
           <!-- Submit -->
           <a id="submitProfile" class="waves-effect waves-light btn">Submit</a>
