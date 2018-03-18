@@ -1,5 +1,6 @@
 // Dependencies
 // =============================================================
+var db = require("../models");
 var path = require("path");
 
 // Routes
@@ -16,12 +17,15 @@ module.exports = function(app) {
 
   app.get('/listings', function(req, res) {
 
-    var hbsObject = db.Homes.findAll({
+    db.Homes.findAll({
       where: {
         activeListing: true
       }
+    }).then(function(dbHomes) {
+      var hbsObject = {
+        listings: dbHomes
+      }
+      res.render('viewListings', hbsObject);
     });
-
-    res.render('viewListings', hbsObject);
   });
 };
