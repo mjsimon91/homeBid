@@ -1,6 +1,7 @@
-body {
+#homeContainer {
   background-image: url('./Images/home.jpeg');
   background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .teal-border {
@@ -18,4 +19,22 @@ body {
 
 .homeButtons {
   margin: 50px
+}
+
+.profileContainer {
+  margin-top: 100px;
+}
+
+/*This is probably temporary*/
+.won {
+  color: green;
+}
+
+/*This is probably temporary*/
+.lost {
+  color: red;
+}
+
+.messageImage {
+  margin: 5px;
 }

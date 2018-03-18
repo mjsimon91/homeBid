@@ -1,13 +1,15 @@
 //Setting the dependencies
+var exphbs = require('express-handlebars');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var db = require('./models');
-
 var app = express();
 
 //Set the Port
 var PORT = process.env.PORT || 3000;
+
+// Requiring our models for syncing
+var db = require("./models");
 
 //serve the static content from the public folder
 app.use(express.static('public'));
