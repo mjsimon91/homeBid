@@ -31,4 +31,9 @@ module.exports = function(app) {
     res.render("profileMessages", {});
   });
 
+  //Create a new member
+  app.get('/form', function(req, res) {
+    res.render('form', {});
+  });
+
 };
