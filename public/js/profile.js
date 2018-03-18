@@ -1,13 +1,18 @@
+//get the URL ID
+var url = window.location.pathname;
+var memberId = url.substring(url.lastIndexOf('/') + 1);
+
 $(document).ready(function() {
     //Used for materialize
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
 
-    //get the URL ID
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
+    //Hide the alerts
+    $('.successAlert').hide();
+    $('.failedAlert').hide();
 
-    getprofile(id);
+
+    getprofile(memberId);
 
     //send the ajax call to update the data
 
@@ -23,6 +28,19 @@ $('#submitProfile').on('click',function(){
     about: $('#about').val().trim()
   };
 
+  //Update the logged in attendee in the database
+  $.ajax({
+    url: '/api/members/' + memberId,
+    method: 'PUT',
+    data: updatedPerson,
+    statusCode: {
+      200: function() {
+        $('.successAlert').children().show(100)
+      }
+    }
+  }).then(function(response){
+    console.log(response);
+  })
 
 });
 
