@@ -28,6 +28,7 @@ app.set("view engine", "handlebars");
 
 //Run the html routes for non handelbars pages
 require('./routes/html-routes.js')(app);
+require('./routes/api-routes.js')(app)
 
 db.sequelize.sync().then(function(){
   app.listen(PORT, function(){
