@@ -12,7 +12,8 @@ module.exports = function(app) {
 
   //get the profile
   app.get('/profile/:id', function(req,res){
-    res.render("profile", {});
+    res.render("profile", {Members: res});
+    console.log(res);
   });
 
   //Get the listings for a sepcific profile

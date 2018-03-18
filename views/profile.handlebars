@@ -43,9 +43,12 @@
           </div>
 
           <div>
+            {{#each Members}}
             <div class="input-field col s4">
               {{!-- Update value in this line to hold the datatag --}}
-              <input value="Alvin" id="firstName" type="text" class="validate">
+
+              <input value="{{this.firstName}}" id="firstName" type="text" class="validate">
+
               <label class="active" for="firstName">First Name</label>
             </div>
 
@@ -54,6 +57,7 @@
               <input value="Smith" id="lastName" type="text" class="validate">
               <label class="active" for="lastName">Last Name</label>
             </div>
+              {{/each}}
           </div>
 
         </div>
