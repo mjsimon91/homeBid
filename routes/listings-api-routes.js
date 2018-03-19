@@ -3,11 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   //get request to return all homes
   app.get("/api/homes", function(req, res) {
-    db.Homes.findAll({
-      where: {
-        activeListing: true
-      }
-    }).then(function(dbHomes) {
+    db.Homes.findAll({}).then(function(dbHomes) {
       res.json(dbHomes);
     });
   });
@@ -16,8 +12,7 @@ module.exports = function(app) {
   app.get("/api/homes/:id", function(req, res) {
     db.Homes.findOne({
       where: {
-        id: req.params.id,
-        activeListing: true
+        id: req.params.id
       }
     }).then(function(dbHomes) {
       res.json(dbHomes);

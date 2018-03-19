@@ -1,7 +1,14 @@
 #homeContainer {
   background-image: url('./Images/home.jpeg');
   background-size: 100%;
+
+main {
+  flex: 1 0 auto;
   background-repeat: no-repeat;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  flex: 1 0 auto;
 }
 
 .teal-border {
@@ -10,12 +17,14 @@
   border-color: #4db6ac;
 }
 
-.pad-6 {
-  padding: 6em;
+.pad-x-4 {
+  padding-right: 4em;
+  padding-left: 4em;
 }
 
-.pad-4 {
-  padding: 4em;
+.pad-y-2 {
+  padding-top: 2em;
+  padding-bottom: 2em;
 
 .homeButtons {
   margin: 50px

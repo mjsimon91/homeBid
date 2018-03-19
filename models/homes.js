@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
 
-    seller: {
+    member: {
       type: DataTypes.STRING,
       // allowNull: false <- eventually
     },
