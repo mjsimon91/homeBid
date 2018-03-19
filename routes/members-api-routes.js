@@ -13,8 +13,9 @@ module.exports = function(app) {
 		db.Members.findOne({
 			where: {
 				id: req.params.id
-			},
-			include: [db.Homes]
+			}
+      // I dont yet have homes in my db so this is not currently working
+			// include: [db.Homes]
 		}).then(function(dbMembers){
 			res.json(dbMembers);
 		});
@@ -26,4 +27,15 @@ module.exports = function(app) {
 			res.json(dbMembers)
 		})
 	})
+
+  // route to update a member
+	app.put('/api/members/:id', function(req,res){
+    db.Members.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbMembers){
+
+    });
+  });
 }

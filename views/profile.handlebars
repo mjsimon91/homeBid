@@ -1,0 +1,110 @@
+<!-- Adding the navbar -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="nav-wrapper">
+        <a href="./home.html" class="brand-logo">homeBid</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="./listings.html">Buy a Home</a></li>
+          <li><a href="./createListing.html">Sell a Home</a></li>
+          <li><a href="badges.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- This contains our entire profile -->
+<div class="container profileContainer">
+  <div class="row">
+    <!-- This is for the update alerts -->
+    <!-- <div class="row"> -->
+      <!-- successfully updated your profile -->
+      <!-- <div class="col s12 successAlert">
+        <div class="card-panel teal center-align">
+          <span class="white-text">You have successfully updated your profile!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- Failed to update your profile alert -->
+      <!-- <div class="col s12 failedAlert">
+        <div class="card-panel red center-align">
+          <span class="white-text">There was an error updating your profile. Please try again.
+          </span>
+        </div>
+      </div> -->
+
+    <!-- </div> -->
+  </div>
+  <div class="row">
+
+<!-- This contains the menu  -->
+    <div class="col s3">
+     <div class="collection">
+       <a href="/profile/1" class="collection-item active">Profile</a>
+       <a href="/profile/1/listings" class="collection-item ">Listings</a>
+       <a href="/profile/1/bids" class="collection-item">Bids</a>
+       <a href="/profile/1/messages" class="collection-item">Messages</a>
+    </div>
+   </div>
+
+
+    <div class="col s9">
+
+
+      <div class="col s12">
+
+        {{!-- Add profile image --}}
+        <div class="row">
+          <div class="col s4">
+
+            <img id="profileImage" class="circle profileImage" src="http://placehold.it/150" alt="Profile">
+
+          </div>
+
+          <div>
+
+            <div class="input-field col s4">
+              {{!-- Update value in this line to hold the datatag --}}
+
+              <input value=" " id="firstName" type="text" class="validate">
+
+              <label class="active" for="firstName">First Name</label>
+            </div>
+
+            <div class="input-field col s4">
+              {{!-- Update value in this line to hold the datatag --}}
+              <input value=" " id="lastName" type="text" class="validate">
+              <label class="active" for="lastName">Last Name</label>
+            </div>
+
+            <!-- Add eail address -->
+
+            <div class="input-field col s8">
+              {{!-- Update value in this line to hold the datatag --}}
+              <input value=" " id="email" type="text" class="validate">
+              <label class="active" for="email">Email Address</label>
+            </div>
+
+          </div>
+        </div>
+
+
+        {{!-- Add the fields --}}
+        <form class="col s9">
+          <!-- Add about me -->
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="about" class="materialize-textarea" data-length="500"> </textarea>
+              <label class="active" for="about">Tell the world about yourself</label>
+            </div>
+          </div>
+          <!-- Submit -->
+          <a id="submitProfile" class="waves-effect waves-light btn">Submit</a>
+        </form>
+
+     </div>
+   </div>
+ </div>
+</div>
