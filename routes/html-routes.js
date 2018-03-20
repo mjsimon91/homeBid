@@ -8,7 +8,8 @@ var path = require("path");
 module.exports = function(app) {
   //Show the first page
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+    // res.sendFile(path.join(__dirname, "../public/home.html"));
+    res.render("home",{});
   });
 
   //get the profile
@@ -17,23 +18,23 @@ module.exports = function(app) {
   });
 
   //Get the listings for a sepcific profile
-  app.get('/profile/:id/listings', function(req,res){
+  app.get('/profile/:id/:listings', function(req,res){
     res.render("profileListings", {});
   });
 
   // Get the Bids for a specific profile
-  app.get('/profile/:id/bids', function(req,res){
+  app.get('/profile/:id/:bids', function(req,res){
     res.render("profileBids", {});
   });
 
   //See all messages for this user
-  app.get('/profile/:id/messages', function(req,res){
+  app.get('/profile/:id/:messages', function(req,res){
     res.render("profileMessages", {});
   });
 
   //Create a new member
-  app.get('/form', function(req, res) {
-    res.render('form', {});
+  app.get('/create-listing', function(req, res) {
+    res.render('createListing', {});
   });
 
   app.get('/listings', function(req, res) {
