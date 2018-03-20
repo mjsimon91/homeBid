@@ -5,7 +5,7 @@ $(function() {
     event.preventDefault();
 
     var title = $('#title-line').val().trim();
-    var address = $('#address-line').val().trim();
+    var address = $('#address-line-1').val().trim(); // update with all address form...
     var imgUrl = 'www.google.com'; // for now <- $('#imgUrl-line').val().trim();
     var description = $('#description-text').val().trim();
 
