@@ -49,20 +49,20 @@ $('#submitProfile').on('click',function(){
 function getprofile(id){
 
   $.ajax({
-    url: '/api/members/' + id,
+    url: '/api/members/' + memberId,
     method: 'GET'
   }).done(function(data){
     var profileImage = data.profileImage;
     var firstName = data.firstName;
     var lastName = data.lastName;
-    var email = data.email
-    var about = data.about
+    var email = data.email;
+    var about = data.about;
 
     //replace all of the html values so that the user can see the info we have for the respective fields
-    $('#profileImage').attr('src',profileImage )
+    $('#profileImage').attr('src',profileImage);
     $('#firstName').val(firstName);
     $('#lastName').val(lastName);
     $('#email').val(email);
-    $('#about').val(about)
-  })
+    $('#about').val(about);
+  });
 }
