@@ -1,0 +1,91 @@
+<!-- This contains the menu  -->
+<div class="col s3">
+  <div class="collection">
+    <a href="./my-profile" class="collection-item {{#if active_profile}}active{{/if}}">Profile</a>
+    <a href="./my-listings" class="collection-item {{#if active_listings}}active{{/if}}">Listings</a>
+    <a href="./my-bids" class="collection-item {{#if active_bids}}active{{/if}}">Bids</a>
+    <a href="./my-messages" class="collection-item {{#if active_messages}}active{{/if}}">Messages</a>
+  </div>
+
+  {{#if active_listings}}
+
+    <!-- Adding a button to add a new listing -->
+    <div class="center-align">
+      <!-- Modal Trigger -->
+      <a class="waves-effect waves-light btn-floating btn-large modal-trigger red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add new listing" href="#modal1"><i class="material-icons">add</i></a>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Create Listing</h4>
+
+        <form class="col s12">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Title" id="title-line" type="text" class="validate">
+              <label for="title-line">Title line</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s8">
+              <input placeholder="Street Address" id="address-line-1" type="text" class="validate">
+              <label for="address-line-1">Address 1</label>
+            </div>
+            <div class="input-field col s4">
+              <input placeholder="Suite, unit, floor" id="address-line-2" type="text" class="validate">
+              <label for="address-line-2">Address 2</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="City" id="address-city" type="text" class="validate">
+              <label for="address-city">City</label>
+            </div>
+            <div class="input-field col s2">
+              <input placeholder="State" id="address-state" type="text" class="validate">
+              <label for="address-state">State</label>
+            </div>
+            <div class="input-field col s4">
+              <input placeholder="Zipcode" id="address-zip" type="text" class="validate">
+              <label for="address-zip">Zipcode</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="file-field input-field s12">
+              <div class="btn">
+                <span>Upload Image</span>
+                <input type="file" multiple>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload one or more image">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="description-text" class="materialize-textarea"></textarea>
+              <label id="description-text">Description</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="btn" id="submit-listing">
+              <span>Post</span>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+      
+    </div>
+
+  {{/if}}
+
+</div>
