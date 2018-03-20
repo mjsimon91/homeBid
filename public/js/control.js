@@ -1,13 +1,12 @@
 $(function() {
 
-  $('#submit-listing').on('click', function(event) {
+  $('#view-listings').on('click', function(event) {
+    event.preventDefault();
 
-    $.ajax('/api/homes', {
+    $.ajax('/view-listings', {
       type: 'GET',
-      data: newHome
-    }).then(
-      function(res) {}
-    );
+    }).then(function(res) {});
+
   });
 
 });

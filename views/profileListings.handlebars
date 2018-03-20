@@ -1,117 +1,91 @@
 <!-- Adding the navbar -->
-<nav>
-  <div class="container">
-    <div class="row">
-      <div class="nav-wrapper">
-        <a href="./home.html" class="brand-logo">homeBid</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="./listings.html">Buy a Home</a></li>
-          <li><a href="./createListing.html">Sell a Home</a></li>
-          <li><a href="badges.html">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
+{{> nav/nav-block}}
 
 <!-- This contains our entire profile -->
 <div class="container profileContainer">
   <div class="row">
 
-<!-- This contains the menu  -->
-    <div class="col s3">
-       <div class="collection">
-         <a href="/profile/1" class="collection-item">Profile</a>
-         <a href="/profile/1/listings" class="collection-item active">Listings</a>
-         <a href="/profile/1/bids" class="collection-item">Bids</a>
-         <a href="/profile/1/messages" class="collection-item">Messages</a>
+    <!-- This contains the menu  -->
+    {{> menu/profile-menu-block active_listings=true}}
+
+    <!-- Begin displaying listings here -->
+    <div class="col s9">
+
+
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card horizontal hoverable">
+            <div class="card-image">
+              <img src="/css/Images/home.jpeg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+
+                <!-- Replace this with dynamic address data -->
+                <p>Street Address One</p>
+                <p>Street Address Two</p>
+                <p>City, State Zip Code</p>
+
+              </div>
+
+              <div class="card-action">
+                <!-- Replace this with the number of bids that have been made -->
+                <p>Number of bids: 10</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Adding a button to add a new listing -->
-      <div class="center-align">
-        <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add new listing"><i class="material-icons">add</i></a>
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card horizontal hoverable">
+            <div class="card-image">
+              <img src="/css/Images/home.jpeg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+
+                <!-- Replace this with dynamic address data -->
+                <p>Street Address One</p>
+                <p>Street Address Two</p>
+                <p>City, State Zip Code</p>
+
+              </div>
+
+              <div class="card-action">
+                <!-- Replace this with the number of bids that have been made -->
+                <p>Number of bids: 10</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card horizontal hoverable">
+            <div class="card-image">
+              <img src="/css/Images/home.jpeg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+
+                <!-- Replace this with dynamic address data -->
+                <p>Street Address One</p>
+                <p>Street Address Two</p>
+                <p>City, State Zip Code</p>
+
+              </div>
+
+              <div class="card-action">
+                <!-- Replace this with the number of bids that have been made -->
+                <p>Number of bids: 10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-   <!-- Begin displaying listings here -->
-   <div class="col s9">
-
-
-     <div class="row">
-       <div class="col s12 m12">
-        <div class="card horizontal hoverable">
-          <div class="card-image">
-            <img src="/css/Images/home.jpeg">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-
-              <!-- Replace this with dynamic address data -->
-              <p>Street Address One</p>
-              <p>Street Address Two</p>
-              <p>City, State Zip Code</p>
-
-            </div>
-
-            <div class="card-action">
-              <!-- Replace this with the number of bids that have been made -->
-              <p>Number of bids: 10</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-
-     <div class="row">
-       <div class="col s12 m12">
-        <div class="card horizontal hoverable">
-          <div class="card-image">
-            <img src="/css/Images/home.jpeg">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-
-              <!-- Replace this with dynamic address data -->
-              <p>Street Address One</p>
-              <p>Street Address Two</p>
-              <p>City, State Zip Code</p>
-
-            </div>
-
-            <div class="card-action">
-              <!-- Replace this with the number of bids that have been made -->
-              <p>Number of bids: 10</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-
-     <div class="row">
-       <div class="col s12 m12">
-        <div class="card horizontal hoverable">
-          <div class="card-image">
-            <img src="/css/Images/home.jpeg">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-
-              <!-- Replace this with dynamic address data -->
-              <p>Street Address One</p>
-              <p>Street Address Two</p>
-              <p>City, State Zip Code</p>
-
-            </div>
-
-            <div class="card-action">
-              <!-- Replace this with the number of bids that have been made -->
-              <p>Number of bids: 10</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-    </div>
- </div>
+  </div>
 </div>
