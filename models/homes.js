@@ -64,8 +64,8 @@ module.exports = function(sequelize, DataTypes) {
 
   // associate with members and bids
    Homes.associate = function(models){
-     Homes.belongsTo(models.Members)
-   }
+     Homes.belongsTo(models.Members);
+   };
 
   return Homes;
-}
+};
