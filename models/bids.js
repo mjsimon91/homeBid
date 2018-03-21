@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes){
     },
     winningBid: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false
     }
   });
