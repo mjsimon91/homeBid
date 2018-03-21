@@ -1,17 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
   var Bids = sequelize.define('Bids', {
     bidAmount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL
     },
 
     cashOffer: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN
     },
 
-    bidAmount: {
-      type: DataTypes.DECIMAL,
-    }
+    asIs: {
+      type: DataTypes.BOOLEAN
+    },
 
+    winningBid: {
+      type: DataTypes.BOOLEAN
+    }
   });
 
 }
