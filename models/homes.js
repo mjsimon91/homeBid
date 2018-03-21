@@ -46,7 +46,24 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  // associate with members and bids
+  // // associate with members and bids
+  // Homes.associate = function(models) {
+  //   // We're saying that a Post should belong to an Author
+  //   // A Post can't be created without an Author due to the foreign key constraint
+  //   Homes.belongsTo(models.Members, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
+
+//   Homes.associate = function(models) {
+//   // Associating Author with Posts
+//   // When an Author is deleted, also delete any associated Posts
+//   Homes.hasMany(models.Bids, {
+//     onDelete: "cascade"
+//   });
+// };
 
   return Homes;
 }
