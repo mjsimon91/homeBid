@@ -13,22 +13,22 @@ module.exports = function(app) {
   });
 
   //get the profile
-  app.get('/my-profile/', function(req,res){
+  app.get('/my-profile/:id', function(req,res){
     res.render("profile",{});
   });
 
   //Get the listings for a sepcific profile
-  app.get('/my-listings', function(req,res){
+  app.get('/my-listings/:id', function(req,res){
     res.render("profileListings", {});
   });
 
   // Get the Bids for a specific profile
-  app.get('/my-bids', function(req,res){
+  app.get('/my-bids/:id', function(req,res){
     res.render("profileBids", {});
   });
 
   //See all messages for this user
-  app.get('/my-messages', function(req,res){
+  app.get('/my-messages/:id', function(req,res){
     res.render("profileMessages", {});
   });
 
