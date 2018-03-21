@@ -2,20 +2,18 @@ $(function() {
   $('#place-bid').on('click', function(event) {
     event.preventDefault();
 
-    console.log('bid engaged');
-
-    var bidAmount = $('#bid-amount').val().trim();
+    var bidAmount = parseFloat($('#bid-amount').val().trim());
     var bidTerms = $('#bid-terms').val();
     var cashOffer = false;
     var asIs = false;
 
-    for (var i = 0; i < bidTerms; i++) {
+    for (var i = 0; i < bidTerms.length; i++) {
 
-      if (bidTerms(i) === 'cash offer') {
+      if (bidTerms[i] === 'cash offer') {
         cashOffer = true;
       }
 
-      if (biderms(i) === 'as is') {
+      if (bidTerms[i] === 'as is') {
         asIs = true;
       }
     }
@@ -28,8 +26,6 @@ $(function() {
       asIs: asIs,
       winningBid: winningBid
     }
-
-    console.log(bidTerms);
 
     $.ajax('/api/bids', {
       type: 'POST',

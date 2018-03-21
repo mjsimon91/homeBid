@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+
   var Bids = sequelize.define('Bids', {
     bidAmount: {
       type: DataTypes.DECIMAL
@@ -16,5 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN
     }
   });
+
+  return Bids;
 
 }
