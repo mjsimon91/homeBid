@@ -24,6 +24,18 @@ module.exports = function(app) {
     });
   });
 
+  //Get all listings by a specific member for the profile
+  app.get('/api/allHomes/:id', function(req,res){
+    db.Homes.findAll({
+      where: {
+        id: req.params.id,
+        activeListing: true
+      }
+    }).then(function(dbHomes){
+      res.json(dbHomes);
+    });
+  });
+
   //add new homes
   app.post("/api/homes", function(req, res) {
     console.log(req.body);

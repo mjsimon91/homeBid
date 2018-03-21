@@ -31,12 +31,12 @@ module.exports = function(sequelize, DataTypes){
     }
   });
 
-  //Associate this with the Homes model
-  // Members.associate = function(models){
-  //   Members.hasMany(models.Home, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  // Associate this with the Homes model
+  Members.associate = function(models){
+    Members.hasMany(models.Homes, {
+      onDelete: "cascade"
+    });
+  };
 
   return Members
 };

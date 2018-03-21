@@ -1,5 +1,6 @@
 // Dependencies
 // =============================================================
+var db = require("../models");
 var path = require("path");
 
 // Routes
@@ -12,17 +13,28 @@ module.exports = function(app) {
 
   //get the profile
   app.get('/profile/:id', function(req,res){
-    res.render("profile", {Members: res});
+    res.render("profile", {});
   });
 
   //Get the listings for a sepcific profile
   app.get('/profile/:id/listings', function(req,res){
-    res.render("profileListings", {});
+    //Need to pass the data for the listings in place of the object
+
   });
 
   // Get the Bids for a specific profile
   app.get('/profile/:id/bids', function(req,res){
-    res.render("profileBids", {});
+    //Need to pass the data for the bids in place of the object
+    db.Homes.findAll({
+      where: {
+        Memberid: req.params.id
+      }
+    }).then(function(dbHomes){
+      var hbsObject = {
+        listings: dbHomes
+      };
+      res.render("profileBids", hbsObject);
+    });
   });
 
   //See all messages for this user

@@ -4,49 +4,65 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-
-    seller: {
+    addressOne: {
       type: DataTypes.STRING,
-      // allowNull: false <- eventually
+      allowNull: false
     },
-
-    address: {
+    addressTwo: {
       type: DataTypes.STRING,
       allowNull: true
     },
-
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    zipCode: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true
     },
-
-    bidAmount: {
+    longitude: {
       type: DataTypes.DECIMAL,
-      defaultValue: 1.00
+      allowNull: false
+    },
+    latitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    activeListing: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    sold: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    ViewCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     },
 
     bidCount: {
       type: DataTypes.INTEGER,
       defaultValue: 0
-    },
-
-    viewCount: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-
-    imgUrl: {
-      type: DataTypes.STRING
-      // validate: {isUrl: true}
-    },
-
-    activeListing: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
     }
   });
 
   // associate with members and bids
+Homes.associate = function(models){
+  Homes.belongsTo(models.Members, {
+    foreignKey:{
+      allowNull: false
+    }
+  });
+};
 
   return Homes;
 }

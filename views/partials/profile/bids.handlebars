@@ -1,0 +1,29 @@
+{{#each listings}}
+<div class="row">
+  <div class="col s12 m12">
+   <div class="card horizontal hoverable">
+     <div class="card-image">
+       <img src="/css/Images/home.jpeg">
+     </div>
+
+
+     <div class="card-stacked">
+       <div class="card-content">
+
+         <!-- Replace this with dynamic address data -->
+         <p>{{this.dataValues.addressOne}}</p>
+         <p>{{this.dataValues.addressTwo}}</p>
+         <p>{{this.dataValues.city}}, {{this.dataValues.state}} {{this.dataValues.zipCode}}</p>
+       </div>
+
+       <div class="card-action">
+         <!-- Replace this with the number of bids that have been made -->
+         <p>My Latest Bid: $1,000,000</p>
+         <p class="won">Won</p>
+       </div>
+     </div>
+
+   </div>
+ </div>
+</div>
+   {{/each}}

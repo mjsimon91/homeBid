@@ -4,14 +4,15 @@
      <div class="card-image">
        <img src="/css/Images/home.jpeg">
      </div>
+
+     {{#each listing}}
      <div class="card-stacked">
        <div class="card-content">
 
          <!-- Replace this with dynamic address data -->
-         <p>Street Address One</p>
-         <p>Street Address Two</p>
-         <p>City, State Zip Code</p>
-
+         <p>{{this.addressOne}}</p>
+         <p>{{this.addressTwo}}</p>
+         <p>{{this.city}}, {{this.state}} {{this.zipCode}}</p>
        </div>
 
        <div class="card-action">
@@ -20,6 +21,7 @@
          <p class="won">Won</p>
        </div>
      </div>
+     {{/each}}
    </div>
  </div>
 </div>
