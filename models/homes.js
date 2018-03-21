@@ -62,9 +62,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  // associate with members and bids
+  // associate with members
    Homes.associate = function(models){
      Homes.belongsTo(models.Members);
+     Homes.hasMany(models.Bids, {
+     });
    };
 
   return Homes;

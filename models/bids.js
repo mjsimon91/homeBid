@@ -22,10 +22,6 @@ module.exports = function(sequelize, DataTypes){
   //Associate Bids to Members
   Bids.associate = function(models){
     Bids.belongsTo(models.Members);
-  };
-
-  //Associate Bids to a Home
-  Bids.associate = function(models){
     Bids.belongsTo(models.Homes);
   };
 
