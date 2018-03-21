@@ -56,9 +56,16 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   // associate with members and bids
+  Homes.associate = function(models){
+    Homes.hasMany(models.Bids, {
+      onDelete: "cascade"
+    });
+  };
+
+// Associate homes to their members
 Homes.associate = function(models){
   Homes.belongsTo(models.Members, {
-    foreignKey:{
+    foreignKey: {
       allowNull: false
     }
   });

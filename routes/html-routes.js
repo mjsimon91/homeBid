@@ -27,14 +27,18 @@ module.exports = function(app) {
     //Need to pass the data for the bids in place of the object
     db.Homes.findAll({
       where: {
-        Memberid: req.params.id
-      }
+        Memberid: req.params.id,
+      },
+      include:[db.Bids]
     }).then(function(dbHomes){
       var hbsObject = {
         listings: dbHomes
       };
+      console.log(hbsObject);
       res.render("profileBids", hbsObject);
     });
+    //Need to render with the bids table as well
+
   });
 
   //See all messages for this user

@@ -38,5 +38,12 @@ module.exports = function(sequelize, DataTypes){
     });
   };
 
+  //Associate thi with bids, which a member can have many
+  Members.associate = function(models){
+    Members.hasMany(models.Bids, {
+      onDelete: "cascade"
+    });
+  };
+
   return Members
 };
