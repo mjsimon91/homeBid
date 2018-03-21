@@ -21,17 +21,10 @@ module.exports = function(app) {
 
   //add new homes
   app.post("/api/homes", function(req, res) {
-    
-    console.log(req.body);
 
-    db.Homes.create({
+    console.log('POST:', req.body);
 
-      title: req.body.title,
-      address: req.body.address,
-      description: req.body.description,
-      imgUrl: req.body.imgUrl
-
-    }).then(function(dbHomes) {
+    db.Homes.create(req.body).then(function(dbHomes) {
       res.json(dbHomes);
     });
   });
