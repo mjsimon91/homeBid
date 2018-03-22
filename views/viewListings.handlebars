@@ -12,79 +12,80 @@
 
           <div class="card-image">
             <a href="#"><img src="./css/Images/home.jpeg"></a>
-            <span class="card-title">{{this.dataValues.title}}</span>
-            <span class="card-content"><i class="tiny material-icons">visibility</i> {{this.dataValues.viewCount}}</span>
-            <span class="card-content"><i class="tiny material-icons">gavel</i> {{this.dataValues.bidCount}}</span>
+            <span class="card-title">{{ this.dataValues.title }}</span>
+            <span class="card-content"><i class="tiny material-icons">visibility</i> {{ this.dataValues.viewCount }}</span>
+            <span class="card-content"><i class="tiny material-icons">gavel</i> {{ this.dataValues.bidCount }}</span>
           </div>
 
           <div class="card-content">
-            <p>{{this.dataValues.description}}</p>
+            <p id="modal-description">{{ this.dataValues.description }}</p>
           </div>
 
           <div class="card-action center-align">
 
-            <p class="card-title">${{this.dataValues.bidAmount}}</p>
+            <p class="card-title">${{ this.dataValues.bidAmount }}</p>
 
             <!-- Adding a button to add a new listing -->
             <div class="center-align">
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light btn modal-trigger red" href="#modal-view-listing">Make Offer</a>
-            </div>
-
-            <!-- Modal Structure -->
-            <div id="modal-view-listing" class="modal">
-              <div class="modal-content">
-                <h4>Make Offer</h4>
-                <img src="https://lorempixel.com/300/300/nature">
-                <div class="card-content">
-                  <p>{{this.dataValues.description}}</p>
-                </div>
-                <div class="card-action">
-                  <p class="card-title">Current Bid: ${{this.dataValues.bidAmount}}</p>
-                </div>
-
-                <form class="col s12">
-
-                  <div class="row">
-                    <div class="input-field col s8">
-                      <div class="input-field col s12">
-                        <select multiple id="bid-terms">
-                          <option value="" disabled selected>Choose your terms</option>
-                          <option value="cash offer">Cash</option>
-                          <option value="as is">As is</option>
-                        </select>
-                        <label>Terms</label>
-                      </div>
-                    </div>
-
-                    <div class="input-field col s4">
-                      <input placeholder="$0.00" id="bid-amount" type="text" class="validate">
-                      <label for="bid-amount">Bid</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input placeholder="Description of bid" id="bid-info" type="text" class="validate">
-                      <label for="bid-info">Bid info</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="btn" id="place-bid">
-                      <span>Place Bid</span>
-                    </div>
-                  </div>
-
-                </form>
-
-              </div>
+              <a data-behaviour="modal" data-bid="{{ this.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" id="make-offer-btn" class="waves-effect waves-light btn modal-trigger red" href="#modal-view-listing">Make Offer</a>
             </div>
           </div>
         </div>
       </div>
 
     {{/each}}
+
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal-view-listing" class="modal">
+  <div class="modal-content">
+
+    <h4>Make Offer</h4>
+    <img id="modal-img" src="https://lorempixel.com/300/300/nature">
+    <div class="card-content">
+      <p>{{ description }}</p>
+    </div>
+    <div class="card-action">
+      <p class="card-title" id="modal-bid-amount">Current Bid: ${{ bid }}</p>
+    </div>
+
+    <form class="col s12">
+
+      <div class="row">
+        <div class="input-field col s8">
+          <div class="input-field col s12">
+            <select multiple id="bid-terms">
+              <option value="" disabled selected>Choose your terms</option>
+              <option value="cash offer">Cash</option>
+              <option value="as is">As is</option>
+            </select>
+            <label>Terms</label>
+          </div>
+        </div>
+
+        <div class="input-field col s4">
+          <input placeholder="$0.00" id="bid-amount" type="text" class="validate">
+          <label for="bid-amount">Bid</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Description of bid" id="bid-info" type="text" class="validate">
+          <label for="bid-info">Bid info</label>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="row">
+      <div class="btn" id="place-bid">
+        <span>Place Bid</span>
+      </div>
+    </div>
 
   </div>
 </div>

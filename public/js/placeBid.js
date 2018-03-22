@@ -1,4 +1,12 @@
 $(function() {
+
+  $('#make-offer-btn').on('click', function(event) {
+    event.preventDefault();
+
+    console.log('clicked offer')
+
+  });
+
   $('#place-bid').on('click', function(event) {
     event.preventDefault();
 
