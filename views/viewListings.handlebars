@@ -18,19 +18,18 @@
           </div>
 
           <div class="card-content">
-            <p id="modal-description">{{ this.dataValues.description }}</p>
+            <p id="non-modal-description">{{ this.dataValues.description }}</p>
           </div>
 
           <div class="card-action center-align">
-
-            <p class="card-title">${{ this.dataValues.bidAmount }}</p>
-
+            <p id="non-modal-bid" class="card-title">${{ this.dataValues.bidAmount }}</p>
             <!-- Adding a button to add a new listing -->
             <div class="center-align">
               <!-- Modal Trigger -->
-              <a data-behaviour="modal" data-bid="{{ this.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" id="make-offer-btn" class="waves-effect waves-light btn modal-trigger red" href="#modal-view-listing">Make Offer</a>
+              <a data-bid="{{ this.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" class="waves-effect waves-light btn modal-trigger red make-offer-btn" href="#modal-view-listing">Make Offer</a>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -46,10 +45,10 @@
     <h4>Make Offer</h4>
     <img id="modal-img" src="https://lorempixel.com/300/300/nature">
     <div class="card-content">
-      <p>{{ description }}</p>
+      <p id="modal-description"></p>
     </div>
     <div class="card-action">
-      <p class="card-title" id="modal-bid-amount">Current Bid: ${{ bid }}</p>
+      <p class="card-title">Current Bid: $<span id="modal-bid-amount"></span></p>
     </div>
 
     <form class="col s12">
