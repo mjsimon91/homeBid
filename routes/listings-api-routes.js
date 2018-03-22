@@ -28,4 +28,15 @@ module.exports = function(app) {
       res.json(dbHomes);
     });
   });
+
+  //find a home by zip code
+    app.get("/api/homes/zipcode/:zipcode", function(zipCode, res) {
+    db.Homes.findAll({
+      where: {
+        zipCode: zipCode
+      }
+    }).then(function(dbHomes) {
+      res.json(dbHomes);
+    });
+  });;
 }

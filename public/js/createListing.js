@@ -1,5 +1,3 @@
-$(function() {
-  console.log('running');
   // CREATE listing
   $('#submit-listing').on('click', function(event) {
     event.preventDefault();
@@ -33,4 +31,4 @@ $(function() {
       function(res) {}
     );
   });
-});
+;
