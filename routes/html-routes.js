@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     db.Homes.findAll({
       where: {
-        id: req.params.id
+        MemberId: req.params.id
       }
     }).then(function(dbHomes){
       var hbsObject = {
