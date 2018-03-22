@@ -2,14 +2,13 @@ $(function() {
 
   $('.make-offer-btn').on('click', function(event) {
     event.preventDefault();
-    console.log(this);
+
     $('#modal-bid-amount').text($(this).attr('data-bid'));
     $('#modal-description').text($(this).attr('data-description'));
 
-    console.log($(this).attr('data-bid'));
-    console.log($(this).attr('data-description'));
+    $.ajax('/api/homes/' + homeId, {
 
-    console.log('clicked offer')
+    });
   });
 
   $('#place-bid').on('click', function(event) {
