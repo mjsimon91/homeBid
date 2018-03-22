@@ -14,7 +14,7 @@ module.exports = function(app) {
 			where: {
 				id: req.params.id
 			},
-				include: [db.Homes]
+				include: [{model: db.Homes}]
 		}).then(function(dbMembers){
 			res.json(dbMembers);
 		});

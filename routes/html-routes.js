@@ -19,7 +19,19 @@ module.exports = function(app) {
 
   //Get the listings for a sepcific profile
   app.get('/my-listings/:id', function(req,res){
-    res.render("profileListings", {});
+
+    db.Homes.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbHomes){
+      var hbsObject = {
+        listings: dbHomes
+      }
+      res.render("profileListings", hbsObject);
+    })
+
+
   });
 
   // Get the Bids for a specific profile
