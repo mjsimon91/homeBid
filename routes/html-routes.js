@@ -36,7 +36,18 @@ module.exports = function(app) {
 
   // Get the Bids for a specific profile
   app.get('/my-bids/:id', function(req,res){
-    res.render("profileBids", {});
+    db.Bids.findAll({
+      where: {
+        MemberId: req.params.id
+      }
+    }).then(function(dbHomes){
+      var hbsObject = {
+        bids: dbHomes
+      }
+      console.log(hbsObject);
+      res.render("profileBids", hbsObject);
+    })
+
   });
 
   //See all messages for this user
