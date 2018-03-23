@@ -100,6 +100,7 @@ module.exports = function(app) {
   });
 };
 
+// Helper to organize hnadlebars object for rendering
 function hbsArr(viewableHomes) {
   var homeInfo = [];
 
@@ -122,6 +123,7 @@ function hbsArr(viewableHomes) {
 
 }
 
+// Helper to find best bid to display in card.
 function displayBid(viewableHome) {
 
   var bestBid;
