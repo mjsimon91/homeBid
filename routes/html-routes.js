@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   //get the profile
   app.get('/my-profile/:id', function(req,res){
-    res.render("profile",{});
+    res.render("profile",{memberId: req.params.id});
   });
 
   //Get the listings for a sepcific profile
@@ -26,8 +26,10 @@ module.exports = function(app) {
       }
     }).then(function(dbHomes){
       var hbsObject = {
-        listings: dbHomes
+        listings: dbHomes,
+        memberId: req.params.id
       }
+      console.log(hbsObject);
       res.render("profileListings", hbsObject);
     })
 
@@ -35,16 +37,24 @@ module.exports = function(app) {
   });
 
   // Get the Bids for a specific profile
-  app.get('/my-bids/:id', function(req,res){
+  app.get('/my-bids/:MemberId', function(req,res){
     db.Bids.findAll({
-      where: {
-        MemberId: req.params.id
-      }
+			where: {
+				MemberId: req.params.MemberId
+			},
+				include: [{model: db.Homes}]
     }).then(function(dbHomes){
       var hbsObject = {
-        bids: dbHomes
+        bids: dbHomes,
+        memberId: req.params.MemberId
       }
+      console.log('*********************************');
+      console.log('*********************************');
+      console.log('*********************************');
       console.log(hbsObject);
+      console.log('*********************************');
+      console.log('*********************************');
+      console.log('*********************************');
       res.render("profileBids", hbsObject);
     })
 
@@ -52,7 +62,7 @@ module.exports = function(app) {
 
   //See all messages for this user
   app.get('/my-messages/:id', function(req,res){
-    res.render("profileMessages", {});
+    res.render("profileMessages", {memberId: req.params.id});
   });
 
   //Create a new member
