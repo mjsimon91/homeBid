@@ -2,6 +2,9 @@
 // =============================================================
 var db = require("../models");
 var path = require("path");
+var Sequelize = require('sequelize')
+var Op = Sequelize.Op;
+
 
 // Routes
 // =============================================================
@@ -48,22 +51,49 @@ module.exports = function(app) {
         bids: dbHomes,
         memberId: req.params.MemberId
       }
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log(hbsObject);
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log('*********************************');
       res.render("profileBids", hbsObject);
     })
 
   });
 
-  //See all messages for this user
-  app.get('/my-messages/:id', function(req,res){
-    res.render("profileMessages", {memberId: req.params.id});
+  //See all chatRooms for this user
+  app.get('/my-messages/:MemberId', function(req,res){
+
+    var chatRooms =[];
+
+    db.ChatRoom.findAll({
+      where: {
+        [Op.or]:[{buyerID:req.params.MemberId},  {sellerID: req.params.MemberId}]
+      },
+      include: [{model: db.Messages}],
+      // order: [db.Messages, 'id', 'DESC']
+    }).then(function(dbChatRooms){
+
+      //Take the last message that was sent and replace the message array 
+      dbChatRooms.forEach(function(dbChatRoom) {
+          dbChatRoom.dataValues.Messages = dbChatRoom.dataValues.Messages[dbChatRoom.dataValues.Messages.length - 1];
+      })
+
+      var hbsObject = {
+        chatRooms: dbChatRooms,
+        memberId: req.params.MemberId
+        // lastMessage: message
+      };
+
+      console.log(hbsObject.chatRooms);
+      console.log(' ');
+      console.log(' ');
+      console.log(hbsObject.chatRooms[0].Messages);
+
+      // for (var i = 0; i < hbsObject.chatRooms.length; i++) {
+      //   chatRoomId = hbsObject.chatRooms[i].dataValues.id
+      //   chatRooms.push(chatRoomId)
+      // }
+      // console.log('chatRooms ' + chatRooms);
+      res.render("profileMessages", hbsObject);
+    });
   });
+
 
   //Create a new member
   app.get('/create-listing', function(req, res) {
