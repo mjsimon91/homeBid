@@ -28,8 +28,6 @@ $(function() {
     $.ajax('/api/homes', {
       type: 'POST',
       data: newHome
-    }).then(
-      function(res) {}
-    );
+    }).then(function(res) {});
   });
 });
