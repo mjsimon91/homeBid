@@ -16,14 +16,12 @@
   </div>
 
   <div class="container">
-    <form>
+    <form method="get" action="/view-listings">
       <div class="input-field">
         <input placeholder="Enter a city, state or zip code" id="homeScreenSearch" type="search" required>
-        <form method="POST" action="/viewlistings">
-        <button id="searchSubmit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <button href="./view-listings" id="searchSubmit" class="btn waves-effect waves-light" type="submit" name="action">Submit
         <i class="material-icons right">send</i>
         </button>
-        </form>
       </div>
     </form>
   </div>       

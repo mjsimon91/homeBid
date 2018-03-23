@@ -10,22 +10,26 @@ $("#searchSubmit").on("click", function(){
 
 	var searchTerm = $("#homeScreenSearch").val().trim();
 	console.log(searchTerm);
+	localStorage.clear();
+	localStorage.setItem("searchterm", searchTerm);
+	
+
 	var zipCode = searchTerm.match(/\b\d{5}\b/g);
 	console.log("zipcode is " + zipCode); 
 	if (searchTerm.match(/^\d/) && zipCode == null) {
 		console.log("enter a valid 5 zip code");
 	} else if (searchTerm.match(/^\d/) && zipCode!= null) {
 		console.log("the user entered a zip code")
-		getHomes(zipCode);
+		getHomesByZip(zipCode);
 	}
 
-	if (searchTerm.match
-		("^[a-z]/i")) {
+	if (searchTerm.charAt(0) >= 'A' && searchTerm.charAt(0) <= 'Z' ) {
 	var splitSearchTerm = searchTerm.split(",");
-	var searchCity = splitSearchTerm[0];
-	var searchState = splitSearchTerm[1];
+	var searchCity = splitSearchTerm[0].trim();
+	var searchState = splitSearchTerm[1].trim();
 	console.log("city is " + searchCity);
 	console.log("state is " + searchState);
+	getHomesByCity(searchCity, searchState)
 	};
 
 
@@ -40,9 +44,20 @@ $("#searchSubmit").on("click", function(){
 });
 
 //function to get posts by zipcode
-function getHomes(zipCode) {
+function getHomesByZip(zipCode) {
 	var zipCodeString = "/zipcode/" + zipCode
+	console.log("zipCodeString is " + zipCodeString)
 	$.get("/api/homes" + zipCodeString, function(data){
+		console.log("Homes", data);
+		homesdata = data;
+	})
+};
+
+//function to get posts by zipcode
+function getHomesByCity(searchCity, searchState) {
+	var cityString = "/" + searchState + "/" + searchCity;
+	console.log("cityString is " + cityString)
+	$.get("/api/homes" + cityString, function(data){
 		console.log("Homes", data);
 		homesdata = data;
 	})
