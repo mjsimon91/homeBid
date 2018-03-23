@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  
   //get request to return all homes
   app.get("/api/homes", function(req, res) {
     db.Homes.findAll({}).then(function(dbHomes) {
@@ -21,8 +22,6 @@ module.exports = function(app) {
 
   //add new homes
   app.post("/api/homes", function(req, res) {
-
-    console.log('POST:', req.body);
 
     db.Homes.create(req.body).then(function(dbHomes) {
       res.json(dbHomes);

@@ -21,7 +21,7 @@ module.exports = function(app) {
     });
   });
 
-  //route to create a new member
+  //route to create a new bid
   app.post("/api/bids", function(req, res){
     db.Bids.create(req.body).then(function(dbBids){
       res.json(dbBids)

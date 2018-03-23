@@ -50,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
     sold: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: true
+      defaultValue: true // Do we want this to be default true?
     },
     viewCount: {
       type: DataTypes.INTEGER,

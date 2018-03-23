@@ -12,21 +12,21 @@
 
           <div class="card-image">
             <a href="#"><img src="./css/Images/home.jpeg"></a>
-            <span class="card-title">{{ this.dataValues.title }}</span>
-            <span class="card-content"><i class="tiny material-icons">visibility</i> {{ this.dataValues.viewCount }}</span>
-            <span class="card-content"><i class="tiny material-icons">gavel</i> {{ this.dataValues.bidCount }}</span>
+            <span class="card-title">{{ this.title }}</span>
+            <span class="card-content"><i class="tiny material-icons">visibility</i> {{ this.viewCount }}</span>
+            <span class="card-content"><i class="tiny material-icons">gavel</i> {{ this.bidCount }}</span>
           </div>
 
           <div class="card-content">
-            <p id="non-modal-description">{{ this.dataValues.description }}</p>
+            <p id="non-modal-description">{{ this.description }}</p>
           </div>
 
           <div class="card-action center-align">
-            <p id="non-modal-bid" class="card-title">${{ this.dataValues.bidAmount }}</p>
+            <p id="non-modal-bid" class="card-title">${{ this.bidAmount }}</p>
             <!-- Adding a button to add a new listing -->
             <div class="center-align">
               <!-- Modal Trigger -->
-              <a data-bid="{{ this.dataValues.bidAmount }}" data-bid="{{ this.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" class="waves-effect waves-light btn modal-trigger red make-offer-btn" href="#modal-view-listing">Make Offer</a>
+              <a data-home-id="{{ this.dataValues.id }}" data-bid="{{ this.dataValues.Bids.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" class="waves-effect waves-light btn modal-trigger red make-offer-btn" href="#modal-view-listing">Make Offer</a>
             </div>
           </div>
 
@@ -64,7 +64,6 @@
             <label>Terms</label>
           </div>
         </div>
-
         <div class="input-field col s4">
           <input placeholder="$0.00" id="bid-amount" type="text" class="validate">
           <label for="bid-amount">Bid</label>

@@ -16,11 +16,11 @@ $(function() {
 
     var newHome = {
       title: title,
-      addressLine1: addressLine1,
-      addressLine2: addressLine2,
-      addressCity: addressCity,
-      addressState: addressState,
-      addressZip: addressZip,
+      addressOne: addressLine1,
+      addressTwo: addressLine2,
+      city: addressCity,
+      state: addressState,
+      zipCode: addressZip,
       imgUrl: imgUrl,
       description: description
     };
