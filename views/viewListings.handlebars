@@ -26,7 +26,13 @@
             <!-- Adding a button to add a new listing -->
             <div class="center-align">
               <!-- Modal Trigger -->
-              <a data-home-id="{{ this.dataValues.id }}" data-bid="{{ this.dataValues.Bids.dataValues.bidAmount }}" data-description="{{ this.dataValues.description }}" class="waves-effect waves-light btn modal-trigger red make-offer-btn" href="#modal-view-listing">Make Offer</a>
+              <a data-view-count="{{ this.viewCount }}"
+              data-bid-count="{{ this.bidCount }}"
+              data-home-id="{{ this.id }}"
+              data-bid="{{ this.sbidAmount }}"
+              data-description="{{ this.description }}"
+              class="waves-effect waves-light btn modal-trigger red make-offer-btn"
+              href="#modal-view-listing">Make Offer</a>
             </div>
           </div>
 
