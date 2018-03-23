@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
 
-    //Hide the alerts
+    //Hide the alerts (These don't do anything yet)
     $('.successAlert').hide();
     $('.failedAlert').hide();
 
@@ -33,13 +33,16 @@ $('#submitProfile').on('click',function(){
     url: '/api/members/' + memberId,
     method: 'PUT',
     data: updatedPerson,
-    statusCode: {
-      200: function() {
-        $('.successAlert').children().show(100)
-      }
+    complete: function(data, textStatus, xhr) {
+        console.log('data');
+        console.log(data);
+        console.log('textStatus');
+        console.log(textStatus);
+        console.log('xhr');
+        console.log(xhr);
     }
   }).then(function(response){
-    console.log(response);
+    console.log("Hello");
   })
 
 });
