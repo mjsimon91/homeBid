@@ -9,7 +9,7 @@ $(function() {
     var addressCity = $('#address-city').val().trim();
     var addressState = $('#address-state').val().trim();
     var addressZip = $('#address-zip').val().trim();
-    var imgUrl = 'https://lorempixel.com/250/250/city'; // for now <- $('#imgUrl-line').val().trim();
+    var imgUrl = $('#upload-image').val().trim();; // for now <- $('#imgUrl-line').val().trim();
     var description = $('#description-text').val().trim();
 
     // front end validation for input here
@@ -24,6 +24,8 @@ $(function() {
       imgUrl: imgUrl,
       description: description
     };
+
+    console.log(newHome.imgUrl);
 
     $.ajax('/api/homes', {
       type: 'POST',
