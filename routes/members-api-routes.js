@@ -34,7 +34,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbMembers){
-
+			res.json(dbMembers)
     });
   });
 }
