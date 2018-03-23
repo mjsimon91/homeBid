@@ -1,4 +1,5 @@
 var db = require("../models");
+const url = require('url'); 
 
 module.exports = function(app) {
   //get request to return all homes
@@ -30,7 +31,7 @@ module.exports = function(app) {
   });
 
   // //find a home by zip code
-  //   app.get("/api/homes/zipcode/:zipcode", function(req, res) {
+  //   app.get("/api/homes/zip/:zipcode", function(req, res) {
   //   db.Homes.findAll({
   //     where: {
   //       zipCode: req.params.zipcode
@@ -55,7 +56,7 @@ module.exports = function(app) {
     //create dynamic URL
     app.get('/api/homes/:state/:city', function(req, res) {
     res.redirect(url.format({
-       pathname:"/",
+       pathname:"/view-listings/" + req.params.state + "/" + req.params.city,
        query: {
           "state": req.params.state,
           "city": req.params.city
@@ -63,9 +64,9 @@ module.exports = function(app) {
     }));
     });
 
-    app.get('/api/homes/zipcode/:zipcode', function(req, res) {
+    app.get('/api/homes/zip/:zipcode', function(req, res) {
     res.redirect(url.format({
-       pathname:"/zipcode/:zipcode",
+       pathname:"/view-listings/zip/" + req.params.zipcode,
        query: {
           "zipcode": req.params.zipcode
         }

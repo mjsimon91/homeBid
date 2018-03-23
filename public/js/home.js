@@ -45,7 +45,7 @@ $("#searchSubmit").on("click", function(){
 
 //function to get posts by zipcode
 function getHomesByZip(zipCode) {
-	var zipCodeString = "/zipcode/" + zipCode
+	var zipCodeString = "/zip/" + zipCode
 	console.log("zipCodeString is " + zipCodeString)
 	$.get("/api/homes" + zipCodeString, function(data){
 		console.log("Homes", data);
