@@ -13,23 +13,56 @@ module.exports = function(app) {
   });
 
   //get the profile
-  app.get('/my-profile/', function(req,res){
-    res.render("profile",{});
+  app.get('/my-profile/:id', function(req,res){
+    res.render("profile",{memberId: req.params.id});
   });
 
   //Get the listings for a sepcific profile
-  app.get('/my-listings', function(req,res){
-    res.render("profileListings", {});
+  app.get('/my-listings/:id', function(req,res){
+
+    db.Homes.findAll({
+      where: {
+        MemberId: req.params.id
+      }
+    }).then(function(dbHomes){
+      var hbsObject = {
+        listings: dbHomes,
+        memberId: req.params.id
+      }
+      console.log(hbsObject);
+      res.render("profileListings", hbsObject);
+    })
+
+
   });
 
   // Get the Bids for a specific profile
-  app.get('/my-bids', function(req,res){
-    res.render("profileBids", {});
+  app.get('/my-bids/:MemberId', function(req,res){
+    db.Bids.findAll({
+			where: {
+				MemberId: req.params.MemberId
+			},
+				include: [{model: db.Homes}]
+    }).then(function(dbHomes){
+      var hbsObject = {
+        bids: dbHomes,
+        memberId: req.params.MemberId
+      }
+      console.log('*********************************');
+      console.log('*********************************');
+      console.log('*********************************');
+      console.log(hbsObject);
+      console.log('*********************************');
+      console.log('*********************************');
+      console.log('*********************************');
+      res.render("profileBids", hbsObject);
+    })
+
   });
 
   //See all messages for this user
-  app.get('/my-messages', function(req,res){
-    res.render("profileMessages", {});
+  app.get('/my-messages/:id', function(req,res){
+    res.render("profileMessages", {memberId: req.params.id});
   });
 
   //Create a new member
