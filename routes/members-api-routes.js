@@ -13,9 +13,8 @@ module.exports = function(app) {
 		db.Members.findOne({
 			where: {
 				id: req.params.id
-			}
-      // I dont yet have homes in my db so this is not currently working
-			// include: [db.Homes]
+			},
+				include: [{model: db.Homes}, {model: db.Bids}]
 		}).then(function(dbMembers){
 			res.json(dbMembers);
 		});

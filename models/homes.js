@@ -5,65 +5,69 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
 
-    member: {
+    addressOne: {
       type: DataTypes.STRING,
-      // allowNull: false <- eventually
+      allowNull: false
     },
-
-    address: {
+    addressTwo: {
       type: DataTypes.STRING,
       allowNull: true
     },
-
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true
     },
-
-    bidAmount: {
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    longitude:{
       type: DataTypes.DECIMAL,
-      defaultValue: 1.00
+      allowNull: true
     },
-
-    bidCount: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    latitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
     },
-
+    activeListing: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+    //Has this home been sold where true = yes and false = no
+    sold: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
     viewCount: {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-
-    imgUrl: {
-      type: DataTypes.STRING
-      // validate: {isUrl: true}
-    },
-
-    activeListing: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
+    bidCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   });
 
-  // // associate with members and bids
-  // Homes.associate = function(models) {
-  //   // We're saying that a Post should belong to an Author
-  //   // A Post can't be created without an Author due to the foreign key constraint
-  //   Homes.belongsTo(models.Members, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
-
-//   Homes.associate = function(models) {
-//   // Associating Author with Posts
-//   // When an Author is deleted, also delete any associated Posts
-//   Homes.hasMany(models.Bids, {
-//     onDelete: "cascade"
-//   });
-// };
+  // associate with members
+   Homes.associate = function(models){
+     Homes.belongsTo(models.Members);
+     Homes.hasMany(models.Bids, {
+     });
+   };
 
   return Homes;
-}
+};
