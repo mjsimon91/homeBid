@@ -2,6 +2,7 @@ var db = require("../models");
 const url = require('url'); 
 
 module.exports = function(app) {
+
   //get request to return all homes
   app.get("/api/homes", function(req, res) {
     db.Homes.findAll({}).then(function(dbHomes) {
@@ -16,17 +17,23 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbHomes) {
-      res.json(dbHomes);
+      res.json(dbHomes)
     });
+  });
+
+  // update home
+  app.put("/api/homes/:id", function(req, res) {
+    db.Homes.update(
+      {viewCount: req.body.viewCount,
+      bidCount: req.body.bidCount},
+      {where: {id: req.params.id}}
+    );
   });
 
   //add new homes
   app.post("/api/homes", function(req, res) {
-
-    console.log('POST:', req.body);
-
     db.Homes.create(req.body).then(function(dbHomes) {
-      res.json(dbHomes);
+      res.json(dbHomes)
     });
   });
 
