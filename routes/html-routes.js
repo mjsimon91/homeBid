@@ -62,6 +62,7 @@ module.exports = function(app) {
 
     var chatRooms =[];
 
+    //Find all chatrooms where the buyer id or seller id is equal to the memberId
     db.ChatRoom.findAll({
       where: {
         [Op.or]:[{buyerID:req.params.MemberId},  {sellerID: req.params.MemberId}]
@@ -82,12 +83,28 @@ module.exports = function(app) {
       var hbsObject = {
         chatRooms: dbChatRooms,
         memberId: req.params.MemberId
-        // lastMessage: message
       };
 
       // console.log(hbsObject.chatRooms[0].Messages);
 
       res.render("profileMessages", hbsObject);
+    });
+  });
+
+  // See all conversations
+  app.get('/myConversation/:id', function(req,res){
+    db.Messages.findAll({
+      where: {
+        ChatRoomId: req.params.id
+      }
+    }).then(function(dbMessages){
+      var hbsObject = {
+          messages: dbMessages,
+          conversationId: req.params.id
+      };
+
+      console.log(hbsObject);
+      res.render('conversation', hbsObject);
     });
   });
 

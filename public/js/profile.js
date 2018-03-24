@@ -42,10 +42,30 @@ $('#submitProfile').on('click',function(){
         console.log(xhr);
     }
   }).then(function(response){
-    console.log("Hello");
+
   })
 
 });
+
+//Start a new conversation
+$('#submitMessage').on('click', function(event){
+  event.preventDefault();
+  var newMessage = {
+    message:$('#message').val().trim(),
+    ChatRoomId: memberId,
+    MemberId: sessionStorage.getItem("member")
+  };
+  console.log(newMessage);
+  // Create new message
+  $.ajax('/api/chatRoom/', {
+    type: 'POST',
+    data: newMessage
+  }).then(function(response){
+    console.log(response);
+    location.reload();
+  });
+});
+
 
 
 //Function to get the profile for thiis member

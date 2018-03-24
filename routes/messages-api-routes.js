@@ -15,4 +15,20 @@ module.exports = function(app){
       res.json(dbChatroom);
     });
   });
+
+  // Create a route to post a new messages
+  // app.post("/api/homes", function(req, res) {
+  //
+  //   console.log('POST:', req.body);
+  //
+  //   db.Homes.create(req.body).then(function(dbHomes) {
+  //     res.json(dbHomes);
+  //   });
+  // });
+
+  app.post('/api/chatRoom/', function(req,res){
+    db.Messages.create(req.body).then(function(dbMessages){
+      res.json(dbMessages);
+    });
+  });
 };

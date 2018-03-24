@@ -1,0 +1,35 @@
+<!-- This page will show all of a users conversations -->
+<!-- Adding the navbar -->
+{{> nav/nav-block}}
+
+<!-- This contains our entire profile -->
+<div class="container profileContainer">
+  <div class="row">
+    <br>
+
+    <!-- This contains the menu  -->
+    {{> menu/profile-menu-block id=memberId active_messages=true}}
+
+    <!-- Begin displaying listings here -->
+    <div class="col s9">
+      <!-- Display a div to show the messages in the conversation -->
+      <div class="messages" style="overflow-y:scroll">
+        {{> profile/conversation}}
+      </div>
+
+      <!-- This will hold a new input -->
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="message" class="materialize-textarea"></textarea>
+              <label for="message">Enter Message Here</label>
+            </div>
+            <a class="waves-effect waves-light btn" id="submitMessage">button</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
