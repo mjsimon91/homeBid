@@ -5,6 +5,7 @@ $(function() {
 
     $('#modal-bid-amount').text($(this).attr('data-bid'));
     $('#modal-description').text($(this).attr('data-description'));
+    $('#modal-img').attr('src', $(this).attr('data-img-url'));
 
     var homeId = $(this).attr('data-home-id');
     var bidCount = parseInt($(this).attr('data-bid-count'));
@@ -25,7 +26,7 @@ $(function() {
 
     $('#place-bid').on('click', function(event) {
       event.preventDefault();
-      
+
       var memberId = sessionStorage.gitItem('member');
       var bidAmount = parseFloat($('#bid-amount').val().trim());
       var bidTerms = $('#bid-terms').val();
