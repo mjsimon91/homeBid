@@ -12,6 +12,8 @@ $(function() {
     var imgUrl = 'https://lorempixel.com/250/250/city'; // for now <- $('#imgUrl-line').val().trim();
     var description = $('#description-text').val().trim();
 
+    var memberId = sessionStorage.getItem("member");
+
     // front end validation for input here
 
     var newHome = {
@@ -22,12 +24,15 @@ $(function() {
       state: addressState,
       zipCode: addressZip,
       imgUrl: imgUrl,
-      description: description
+      description: description,
+      MemberId: memberId
     };
 
     $.ajax('/api/homes', {
       type: 'POST',
       data: newHome
-    }).then(function(res) {});
+    }).then(function(res) {
+      location.reload();
+    });
   });
 });
