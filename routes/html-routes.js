@@ -4,6 +4,7 @@ var db = require("../models");
 var path = require("path");
 var Sequelize = require('sequelize')
 var Op = Sequelize.Op;
+var moment = require('moment');
 
 
 // Routes
@@ -69,10 +70,14 @@ module.exports = function(app) {
       // order: [db.Messages, 'id', 'DESC']
     }).then(function(dbChatRooms){
 
-      //Take the last message that was sent and replace the message array 
+      //Take the last message that was sent and replace the message array
       dbChatRooms.forEach(function(dbChatRoom) {
           dbChatRoom.dataValues.Messages = dbChatRoom.dataValues.Messages[dbChatRoom.dataValues.Messages.length - 1];
+          dbChatRoom.dataValues.Messages.dataValues.createdAt = moment(dbChatRoom.dataValues.Messages.dataValues.createdAt).calendar();
+
+          console.log(dbChatRoom.dataValues.Messages)
       })
+
 
       var hbsObject = {
         chatRooms: dbChatRooms,
@@ -80,16 +85,8 @@ module.exports = function(app) {
         // lastMessage: message
       };
 
-      console.log(hbsObject.chatRooms);
-      console.log(' ');
-      console.log(' ');
-      console.log(hbsObject.chatRooms[0].Messages);
+      // console.log(hbsObject.chatRooms[0].Messages);
 
-      // for (var i = 0; i < hbsObject.chatRooms.length; i++) {
-      //   chatRoomId = hbsObject.chatRooms[i].dataValues.id
-      //   chatRooms.push(chatRoomId)
-      // }
-      // console.log('chatRooms ' + chatRooms);
       res.render("profileMessages", hbsObject);
     });
   });
