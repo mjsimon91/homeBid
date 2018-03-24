@@ -37,6 +37,7 @@ module.exports = function(sequelize, DataTypes){
       onDelete: "cascade"
     });
     Members.hasMany(models.Bids)
+    Members.hasMany(models.Messages)
   };
 
   return Members;

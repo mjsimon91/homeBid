@@ -34,6 +34,7 @@ app.set('view engine', 'handlebars');
 require('./routes/listings-api-routes.js')(app);
 require('./routes/members-api-routes.js')(app);
 require('./routes/bids-api-routes.js')(app);
+require('./routes/messages-api-routes.js')(app);
 require('./routes/html-routes.js')(app);
 
 db.sequelize.sync().then(function() {

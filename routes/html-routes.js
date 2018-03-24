@@ -2,6 +2,10 @@
 // =============================================================
 var db = require("../models");
 var path = require("path");
+var Sequelize = require('sequelize')
+var Op = Sequelize.Op;
+var moment = require('moment');
+
 
 // Routes
 // =============================================================
@@ -52,24 +56,62 @@ module.exports = function(app) {
         bids: dbHomes,
         memberId: req.params.MemberId
       }
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log(hbsObject);
-      console.log('*********************************');
-      console.log('*********************************');
-      console.log('*********************************');
       res.render("profileBids", hbsObject);
     })
 
   });
 
-  //See all messages for this user
-  app.get('/my-messages/:id', function(req, res) {
-    res.render("profileMessages", {
-      memberId: req.params.id
+  //See all chatRooms for this user
+  app.get('/my-messages/:MemberId', function(req,res){
+
+    var chatRooms =[];
+
+    //Find all chatrooms where the buyer id or seller id is equal to the memberId
+    db.ChatRoom.findAll({
+      where: {
+        [Op.or]:[{buyerID:req.params.MemberId},  {sellerID: req.params.MemberId}]
+      },
+      include: [{model: db.Messages}],
+      // order: [db.Messages, 'id', 'DESC']
+    }).then(function(dbChatRooms){
+
+      //Take the last message that was sent and replace the message array
+      dbChatRooms.forEach(function(dbChatRoom) {
+          dbChatRoom.dataValues.Messages = dbChatRoom.dataValues.Messages[dbChatRoom.dataValues.Messages.length - 1];
+          dbChatRoom.dataValues.Messages.dataValues.createdAt = moment(dbChatRoom.dataValues.Messages.dataValues.createdAt).calendar();
+
+          console.log(dbChatRoom.dataValues.Messages)
+      })
+
+
+      var hbsObject = {
+        chatRooms: dbChatRooms,
+        memberId: req.params.MemberId
+      };
+
+      // console.log(hbsObject.chatRooms[0].Messages);
+
+      res.render("profileMessages", hbsObject);
     });
   });
+
+  // See all conversations
+  app.get('/myConversation/:id', function(req,res){
+    db.Messages.findAll({
+      where: {
+        ChatRoomId: req.params.id
+      }
+    }).then(function(dbMessages){
+      var hbsObject = {
+          messages: dbMessages,
+          conversationId: req.params.id
+      };
+
+      console.log(hbsObject);
+      res.render('conversation', hbsObject);
+    });
+  });
+
 
   //Create a new member
   app.get('/create-listing', function(req, res) {
