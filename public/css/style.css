@@ -51,6 +51,7 @@ main {
 .profileImage {
   height: 150px;
   width: 150px;
+  margin-left: 10px;
 }
 
 .messages {

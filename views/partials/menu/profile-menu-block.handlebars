@@ -1,10 +1,10 @@
 <!-- This contains the menu  -->
 <div class="col s3">
   <div class="collection">
-    <a href="/my-profile/{{id}}" class="collection-item {{#if active_profile}}active{{/if}}">Profile</a>
-    <a href="/my-listings/{{id}}" class="collection-item {{#if active_listings}}active{{/if}}">Listings</a>
-    <a href="/my-bids/{{id}}" class="collection-item {{#if active_bids}}active{{/if}}">Bids</a>
-    <a href="/my-messages/{{id}}" class="collection-item {{#if active_messages}}active{{/if}}">Messages</a>
+    <a id="profile" class="collection-item {{#if active_profile}}active{{/if}}">Profile</a>
+    <a id="listings" class="collection-item {{#if active_listings}}active{{/if}}">Listings</a>
+    <a id="bids" class="collection-item {{#if active_bids}}active{{/if}}">Bids</a>
+    <a id="messages" class="collection-item {{#if active_messages}}active{{/if}}">Messages</a>
   </div>
 
   {{#if active_listings}}
