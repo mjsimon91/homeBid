@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     }
 
-    // tags
+    // tags?
 
   });
 
