@@ -1,4 +1,5 @@
 var db = require("../models");
+const url = require('url'); 
 
 module.exports = function(app) {
 
@@ -35,4 +36,29 @@ module.exports = function(app) {
       res.json(dbHomes)
     });
   });
+
+  //find a home by zip code
+    app.get("/api/homes/zip/:zipcode", function(req, res) {
+    db.Homes.findAll({
+      where: {
+        zipCode: req.params.zipcode
+      }
+    }).then(function(dbHomes) {
+      res.json(dbHomes);
+    });
+  });;
+
+      //find a home by city code
+    app.get("/api/homes/:state/:city", function(req, res) {
+    db.Homes.findAll({
+      where: {
+        city: req.params.city,
+        state: req.params.state
+      }
+    }).then(function(dbHomes) {
+      res.json(dbHomes);
+    });
+  });
+
+
 }

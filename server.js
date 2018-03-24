@@ -4,6 +4,7 @@ var express     = require('express');
 var exphbs      = require('express-handlebars');
 var bodyParser  = require('body-parser');
 var app = express();
+const url = require("url");
 
 //Set the Port
 var PORT = process.env.PORT || 3000;
@@ -12,7 +13,9 @@ var PORT = process.env.PORT || 3000;
 var db = require("./models");
 
 //serve the static content from the public folder
-app.use(express.static('public'));
+app.use(express.static("public"));
+app.use(express.static("node_modules/auth0-js/build/"));
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({

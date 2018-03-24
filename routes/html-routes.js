@@ -98,6 +98,39 @@ module.exports = function(app) {
 
     });
   });
+
+  //html route to display homes by city
+  app.get('/view-listings/:state/:city', function(req, res) {
+
+  db.Homes.findAll({
+    where: {
+      state: req.params.state,
+      city:req.params.city,
+      activeListing: true
+    }
+  }).then(function(dbHomes) {
+    var hbsObject = {
+      listings: dbHomes
+    }
+    res.render('viewListings', hbsObject);
+  });
+});
+
+  //html route to populate homes by zipcode
+ app.get('/view-listings/zip/:zipcode', function(req, res) {
+
+  db.Homes.findAll({
+    where: {
+      zipcode: req.params.zipcode,
+      activeListing: true
+    }
+  }).then(function(dbHomes) {
+    var hbsObject = {
+      listings: dbHomes
+    }
+    res.render('viewListings', hbsObject);
+  });
+});
 };
 
 function hbsArr(viewableHomes) {
