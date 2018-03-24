@@ -170,7 +170,7 @@ function hbsArr(viewableHomes) {
 
 function displayBid(viewableHome) {
 
-  var bestBid;
+  var bestBid = 1.0;
 
   for (var j = 0; j < viewableHome.dataValues.Bids.length; j++) {
 
@@ -179,13 +179,9 @@ function displayBid(viewableHome) {
     if (currentBid.winningBid) {
 
       bestBid = currentBid.bidAmount;
-      return bestBid;
-
-    } else {
-
-      bestBid = 1.00;
-      return bestBid;
 
     }
   }
+  return bestBid;
+
 }
