@@ -14,7 +14,7 @@ module.exports = function(app) {
 			where: {
 				id: req.params.id
 			},
-			include: [db.Homes]
+				include: [{model: db.Homes}, {model: db.Bids}]
 		}).then(function(dbMembers){
 			res.json(dbMembers);
 		});
@@ -27,6 +27,14 @@ module.exports = function(app) {
 		})
 	})
 
-
-
+  // route to update a member
+	app.put('/api/members/:id', function(req,res){
+    db.Members.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbMembers){
+			res.json(dbMembers)
+    });
+  });
 }

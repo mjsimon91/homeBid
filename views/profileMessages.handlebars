@@ -1,0 +1,19 @@
+<!-- Adding the navbar -->
+{{> nav/nav-block}}
+
+<!-- This contains our entire profile -->
+<div class="container profileContainer">
+  <div class="row">
+    <br>
+
+    <!-- This contains the menu  -->
+    {{> menu/profile-menu-block id=memberId active_messages=true}}
+
+    <!-- Begin displaying Messages here -->
+    <div class="col s9">
+
+      {{> profile/messages}}
+
+    </div>
+  </div>
+</div>
