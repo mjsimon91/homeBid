@@ -30,4 +30,4 @@ $(function() {
       data: newHome
     }).then(function(res) {});
   });
-;
+});

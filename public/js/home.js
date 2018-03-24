@@ -20,6 +20,7 @@ $("#searchSubmit").on("click", function(){
 		console.log("enter a valid 5 zip code");
 	} else if (searchTerm.match(/^\d/) && zipCode!= null) {
 		console.log("the user entered a zip code")
+		window.location.href = "/view-listings/zip/" + zipCode
 		getHomesByZip(zipCode);
 	}
 
@@ -29,6 +30,7 @@ $("#searchSubmit").on("click", function(){
 	var searchState = splitSearchTerm[1].trim();
 	console.log("city is " + searchCity);
 	console.log("state is " + searchState);
+	window.location.href = "/view-listings/" + searchState + "/" + searchCity;
 	getHomesByCity(searchCity, searchState)
 	};
 

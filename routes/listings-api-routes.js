@@ -37,48 +37,28 @@ module.exports = function(app) {
     });
   });
 
-  // //find a home by zip code
-  //   app.get("/api/homes/zip/:zipcode", function(req, res) {
-  //   db.Homes.findAll({
-  //     where: {
-  //       zipCode: req.params.zipcode
-  //     }
-  //   }).then(function(dbHomes) {
-  //     res.json(dbHomes);
-  //   });
-  // });;
-
-  //     //find a home by city code
-  //   app.get("/api/homes/:state/:city", function(req, res) {
-  //   db.Homes.findAll({
-  //     where: {
-  //       city: req.params.city,
-  //       state: req.params.state
-  //     }
-  //   }).then(function(dbHomes) {
-  //     res.json(dbHomes);
-  //   });
-  // });
-
-    //create dynamic URL
-    app.get('/api/homes/:state/:city', function(req, res) {
-    res.redirect(url.format({
-       pathname:"/view-listings/" + req.params.state + "/" + req.params.city,
-       query: {
-          "state": req.params.state,
-          "city": req.params.city
-        }
-    }));
+  //find a home by zip code
+    app.get("/api/homes/zip/:zipcode", function(req, res) {
+    db.Homes.findAll({
+      where: {
+        zipCode: req.params.zipcode
+      }
+    }).then(function(dbHomes) {
+      res.json(dbHomes);
     });
+  });;
 
-    app.get('/api/homes/zip/:zipcode', function(req, res) {
-    res.redirect(url.format({
-       pathname:"/view-listings/zip/" + req.params.zipcode,
-       query: {
-          "zipcode": req.params.zipcode
-        }
-     }));
- });
+      //find a home by city code
+    app.get("/api/homes/:state/:city", function(req, res) {
+    db.Homes.findAll({
+      where: {
+        city: req.params.city,
+        state: req.params.state
+      }
+    }).then(function(dbHomes) {
+      res.json(dbHomes);
+    });
+  });
 
 
 }
