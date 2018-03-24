@@ -7,6 +7,7 @@ var Op = Sequelize.Op;
 var moment = require('moment');
 
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -63,15 +64,12 @@ module.exports = function(app) {
 
   //See all chatRooms for this user
   app.get('/my-messages/:MemberId', function(req,res){
-
-    var chatRooms =[];
-
     //Find all chatrooms where the buyer id or seller id is equal to the memberId
     db.ChatRoom.findAll({
       where: {
         [Op.or]:[{buyerID:req.params.MemberId},  {sellerID: req.params.MemberId}]
       },
-      include: [{model: db.Messages}],
+      include: [{model: db.Messages}]
       // order: [db.Messages, 'id', 'DESC']
     }).then(function(dbChatRooms){
 
@@ -93,6 +91,7 @@ module.exports = function(app) {
 
       res.render("profileMessages", hbsObject);
     });
+
   });
 
   // See all conversations
@@ -100,14 +99,19 @@ module.exports = function(app) {
     db.Messages.findAll({
       where: {
         ChatRoomId: req.params.id
-      }
+      },
+      include: [{model: db.Members}],
+
     }).then(function(dbMessages){
+
+      console.log(dbMessages);
+
+      for (var i = 0; i < dbMessages.length; i++) {
+        console.log(dbMessages[i].Member);
+      }
       var hbsObject = {
           messages: dbMessages,
-          conversationId: req.params.id
       };
-
-      console.log(hbsObject);
       res.render('conversation', hbsObject);
     });
   });
