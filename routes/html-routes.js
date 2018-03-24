@@ -7,6 +7,7 @@ var Op = Sequelize.Op;
 var moment = require('moment');
 
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -63,24 +64,25 @@ module.exports = function(app) {
 
   //See all chatRooms for this user
   app.get('/my-messages/:MemberId', function(req,res){
-
-    var chatRooms =[];
-
     //Find all chatrooms where the buyer id or seller id is equal to the memberId
     db.ChatRoom.findAll({
       where: {
-        [Op.or]:[{buyerID:req.params.MemberId},  {sellerID: req.params.MemberId}]
+        [Op.or]: [{
+          buyerID: req.params.MemberId
+        }, {
+          sellerID: req.params.MemberId
+        }]
       },
-      include: [{model: db.Messages}],
+      include: [{model: db.Messages}]
       // order: [db.Messages, 'id', 'DESC']
-    }).then(function(dbChatRooms){
+    }).then(function(dbChatRooms) {
 
       //Take the last message that was sent and replace the message array
       dbChatRooms.forEach(function(dbChatRoom) {
-          dbChatRoom.dataValues.Messages = dbChatRoom.dataValues.Messages[dbChatRoom.dataValues.Messages.length - 1];
-          dbChatRoom.dataValues.Messages.dataValues.createdAt = moment(dbChatRoom.dataValues.Messages.dataValues.createdAt).calendar();
+        dbChatRoom.dataValues.Messages = dbChatRoom.dataValues.Messages[dbChatRoom.dataValues.Messages.length - 1];
+        dbChatRoom.dataValues.Messages.dataValues.createdAt = moment(dbChatRoom.dataValues.Messages.dataValues.createdAt).calendar();
 
-          console.log(dbChatRoom.dataValues.Messages)
+        console.log(dbChatRoom.dataValues.Messages)
       })
 
 
@@ -93,21 +95,27 @@ module.exports = function(app) {
 
       res.render("profileMessages", hbsObject);
     });
+
   });
 
   // See all conversations
-  app.get('/myConversation/:id', function(req,res){
+  app.get('/myConversation/:id', function(req, res) {
     db.Messages.findAll({
       where: {
         ChatRoomId: req.params.id
-      }
+      },
+      include: [{model: db.Members}],
+
     }).then(function(dbMessages){
+
+      console.log(dbMessages);
+
+      for (var i = 0; i < dbMessages.length; i++) {
+        console.log(dbMessages[i].Member);
+      }
       var hbsObject = {
           messages: dbMessages,
-          conversationId: req.params.id
       };
-
-      console.log(hbsObject);
       res.render('conversation', hbsObject);
     });
   });
@@ -136,12 +144,13 @@ module.exports = function(app) {
         listings: homeInfo
       }
 
-      res.render('viewListings',hbsObject);
+      res.render('viewListings', hbsObject);
 
     });
   });
 };
 
+// Helper to organize hnadlebars object for rendering
 function hbsArr(viewableHomes) {
   var homeInfo = [];
 
@@ -164,9 +173,10 @@ function hbsArr(viewableHomes) {
 
 }
 
+// Helper to find best bid to display in card.
 function displayBid(viewableHome) {
 
-  var bestBid;
+  var bestBid = 1.0;
 
   for (var j = 0; j < viewableHome.dataValues.Bids.length; j++) {
 
@@ -175,13 +185,9 @@ function displayBid(viewableHome) {
     if (currentBid.winningBid) {
 
       bestBid = currentBid.bidAmount;
-      return bestBid;
-
-    } else {
-
-      bestBid = 1.00;
-      return bestBid;
 
     }
   }
+  return bestBid;
+
 }

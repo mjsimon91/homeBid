@@ -11,7 +11,7 @@
         <div class="card">
 
           <div class="card-image">
-            <a href="#"><img src="./css/Images/home.jpeg"></a>
+            <a href="#"><img src="{{ this.imgUrl }}"></a>
             <span class="card-title">{{ this.title }}</span>
             <span class="card-content"><i class="tiny material-icons">visibility</i> {{ this.viewCount }}</span>
             <span class="card-content"><i class="tiny material-icons">gavel</i> {{ this.bidCount }}</span>
@@ -31,6 +31,7 @@
               data-home-id="{{ this.id }}"
               data-bid="{{ this.bidAmount }}"
               data-description="{{ this.description }}"
+              data-img-url="{{ this.imgUrl }}"
               class="waves-effect waves-light btn modal-trigger red make-offer-btn"
               href="#modal-view-listing">Make Offer</a>
             </div>
@@ -49,7 +50,7 @@
   <div class="modal-content">
 
     <h4>Make Offer</h4>
-    <img id="modal-img" src="https://lorempixel.com/300/300/nature">
+    <img id="modal-img">
     <div class="card-content">
       <p id="modal-description"></p>
     </div>

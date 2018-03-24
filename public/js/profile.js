@@ -1,6 +1,6 @@
 //get the URL ID
-var url = window.location.pathname;
-var memberId = url.substring(url.lastIndexOf('/') + 1);
+// var url = window.location.pathname;
+var memberId = sessionStorage.getItem("member");
 
 $(document).ready(function() {
     //Used for materialize
@@ -17,6 +17,25 @@ $(document).ready(function() {
     //send the ajax call to update the data
 
   });
+//Click on the 'Profile' button
+$('#profile').on('click', function(){
+  window.location ='/my-profile/' + memberId;
+});
+
+//Click on the listings item
+$('#listings').on('click', function(){
+  window.location ='/my-listings/' + memberId;
+});
+
+//Click on bids
+$('#bids').on('click', function(){
+  window.location ='/my-bids/' + memberId;
+});
+
+//Get all of my messages
+$('#messages').on('click', function(){
+  window.location ='/my-messages/' + memberId;
+});
 
 //Button cick to update profile
 $('#submitProfile').on('click',function(){
@@ -33,16 +52,20 @@ $('#submitProfile').on('click',function(){
     url: '/api/members/' + memberId,
     method: 'PUT',
     data: updatedPerson,
-    complete: function(data, textStatus, xhr) {
-        console.log('data');
-        console.log(data);
-        console.log('textStatus');
-        console.log(textStatus);
-        console.log('xhr');
-        console.log(xhr);
+    success: function(data, status, jqXHR){
+      $('.successAlert').show()
+      setTimeout(function() {
+       $('.successAlert').fadeOut();
+      }, 2000);
+    },
+    error: function(data, status, jqXHR){
+      $('.failedAlert').show()
+      setTimeout(function() {
+       $('.failedAlert').fadeOut();
+      }, 2000);
     }
   }).then(function(response){
-
+    console.log(response);
   })
 
 });
