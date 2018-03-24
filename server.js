@@ -3,6 +3,8 @@ var exphbs      = require('express-handlebars');
 var express     = require('express');
 var exphbs      = require('express-handlebars');
 var bodyParser  = require('body-parser');
+var fileUpload  = require('express-fileupload');
+
 var app = express();
 
 //Set the Port
@@ -22,6 +24,9 @@ app.use(bodyParser.urlencoded({
 //parse the JSON application
 app.use(bodyParser.json());
 
+// default options
+app.use(fileUpload());
+
 //The handlebars files are .handlebars
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
@@ -34,6 +39,7 @@ app.set('view engine', 'handlebars');
 require('./routes/listings-api-routes.js')(app);
 require('./routes/members-api-routes.js')(app);
 require('./routes/bids-api-routes.js')(app);
+require('./routes/imgs-api-routes.js')(app);
 require('./routes/html-routes.js')(app);
 
 db.sequelize.sync().then(function() {

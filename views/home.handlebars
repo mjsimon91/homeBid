@@ -13,6 +13,14 @@
         <a href="./my-profile/" class="col s5 waves-effect waves-light btn-large homeChoice">Sign In</a>
       </div>
     </div>
+
+    <div class="row">
+      <form ref='uploadForm' id='uploadForm' action='http://localhost:3000/api/uploads' method='post' encType="multipart/form-data">
+        <input type="file" name="imgFile" />
+        <input type='submit' value='Upload!' />
+      </form>
+
+    </div>
   </div>
 
 </body>
