@@ -52,16 +52,20 @@ $('#submitProfile').on('click',function(){
     url: '/api/members/' + memberId,
     method: 'PUT',
     data: updatedPerson,
-    complete: function(data, textStatus, xhr) {
-        console.log('data');
-        console.log(data);
-        console.log('textStatus');
-        console.log(textStatus);
-        console.log('xhr');
-        console.log(xhr);
+    success: function(data, status, jqXHR){
+      $('.successAlert').show()
+      setTimeout(function() {
+       $('.successAlert').fadeOut();
+      }, 2000);
+    },
+    error: function(data, status, jqXHR){
+      $('.failedAlert').show()
+      setTimeout(function() {
+       $('.failedAlert').fadeOut();
+      }, 2000);
     }
   }).then(function(response){
-
+    console.log(response);
   })
 
 });
