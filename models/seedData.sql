@@ -10,3 +10,14 @@ VALUES('The White House', '1600 Pennsylvania Ave NW','','Washington','DC', 20004
 INSERT INTO Bids(bidAmount, cashOffer, asIs)
 VALUES (10000000.00, true, true),
 (20000, false, true)
+
+INSERT INTO ChatRooms(buyerID, sellerID)
+VALUES(1,2), (1,3), (2,3)
+
+INSERT INTO Messages(message,ChatRoomId,MemberId)
+VALUES('Hello. I am interested in your home', 1, 1),
+("Have you submitted a term sheet?",1,2),
+("What a lovely home you have. Why is it on the market?", 2, 1),
+("I am moving for my job", 2,3),
+("Is your home still for sale", 3, 2),
+("No, it is off the market now", 3, 3)

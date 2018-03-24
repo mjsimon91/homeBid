@@ -1,0 +1,28 @@
+{{#each chatRooms}}
+
+<div class="row">
+  <div class="col s12 m12">
+    <a href="/myConversation/{{this.dataValues.id}}">
+    <div class="card horizontal hoverable conversation">
+      <div class="messageImage valign-wrapper">
+        <img class="circle" src="http://placehold.it/120">
+      </div>
+      <div>
+        <div class="card-content">
+
+          <!-- Replace this with dynamic address data -->
+          <p>{{this.dataValues.Messages.dataValues.message}}</p>
+
+
+        </div>
+
+        <div class="card-content">
+          <!-- Replace this with the number of bids that have been made -->
+          <p>{{this.dataValues.Messages.dataValues.createdAt}}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+  </div>
+</div>
+{{/each}}

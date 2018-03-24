@@ -25,7 +25,8 @@ $(function() {
 
     $('#place-bid').on('click', function(event) {
       event.preventDefault();
-
+      
+      var memberId = sessionStorage.gitItem('member');
       var bidAmount = parseFloat($('#bid-amount').val().trim());
       var bidTerms = $('#bid-terms').val();
       var cashOffer = false;
@@ -46,6 +47,7 @@ $(function() {
 
       var newBid = {
         homeId: homeId,
+        memberId: memberId,
         bidAmount: bidAmount,
         cashOffer: cashOffer,
         asIs: asIs,
