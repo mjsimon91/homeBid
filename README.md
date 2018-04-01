@@ -46,5 +46,8 @@ There are three main pages that a user can interact with:
 ## Team Members
 * Ali Kassam
 * Jean Tzintzun
-* Matthew Simon
+* [Matthew Simon](https://github.com/mjsimon91)
 * [Michael Bychkowski](https://github.com/mbychkowski)
+
+## Play for yourself
+https://rocky-bayou-80825.herokuapp.com/
